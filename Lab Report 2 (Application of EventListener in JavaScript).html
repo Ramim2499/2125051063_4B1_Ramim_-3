@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        button{
+            display:inline-block;
+        }
+        input{
+            width: 120px;
+        }
+        form{
+            display: inline-block;
+        }
+        .droptarget {
+        width: 100px; 
+        height: 35px;
+        padding: 10px;
+        border: 1px solid black;
+        }
+        
+
+    </style>
+</head>
+<body onload="onl()" onresize="res()" onscroll="onsc()" onafterprint="onatp()" onbeforeprint="onbp()" onpageshow="onpages()">
+    <!-- onliad fun -->
+    <div class="container">
+        <div class="row">
+            <h1 style="text-align: center;">List of Event Listeners</h1>
+        </div>
+        <div class="row">
+            <div class="col-3"><b>Event Name</b></div>
+            <div class="col-6"><b>Functionality</b></div>
+            <div class="col-3"><b>Result</b></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <button onclick="actie()">click</button>
+            </div>
+            <div class="col-6">
+                Triggered when a mouse button is clicked on an element
+            </div>
+            <div class="col-3">
+                <p id="para"></p></b>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3"><button onmouseover="mousover()" onmouseout="mouseout()">mousover & out</button></div>
+            <div class="col-6">
+                Triggered when the mouse cursor enterns an element. <br>
+                Triggered when the mouse cursor leaves an element.
+            </div>
+            <div class="col-3" id="mover">click</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">Keydown</div>
+            <div class="col-6">Triggered when a key is pressed down</div>
+            <div class="col-3" id="kdown"><input type="text" onkeydown="keyd()" placeholder="Enter here"></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">Keyup</div>
+            <div class="col-6">Triggered when a key is pressed up</div>
+            <div class="col-3" id="kup"><input type="text" onkeyup="keyu()" placeholder="Enter here"></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">load</div>
+            <div class="col-6">Triggered when a page or image is finished loading.</div>
+            <div class="col-3" id="oload"></div>
+            <hr>
+        </div>
+
+        <!-- problem -->
+        <div class="row">
+            <form onsubmit="ons()">
+                <div class="col-3"><button type="submit">submit</button></div>
+                <div class="col-6">Triggered when a form is submitted.</div>
+                <div class="col-3" id="osubmit"></div>
+            <hr>
+            </form>
+        </div>
+        <!-- problem -->
+
+        <div class="row">
+            <div class="col-3" id="ochange">change</div>
+            <div class="col-6">Triggered when the value of an input element changes.</div>   
+            <div class="col-3">
+                <select id="mySelect" onchange="onc()">
+                    <option value="Dhaka">Dhaka</option>
+                    <option value="Comilla">Comilla</option>
+                    <option value="Chattagong">Chattagong</option>
+                    <option value="Sylhet">Sylhet</option>
+                  </select>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3" >focus/blur</div>
+            <div class="col-6">
+                Triggered when an element receives focus. <br>
+                Triggered when an element loses focus.
+            </div>
+            <div class="col-3"><input type="text" onfocus="onf(this)" onblur="onb(this)" placeholder="Enter here"></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">resize</div>
+            <div class="col-6">Triggered when the window is resized.</div>
+            <div class="col-3" ><p id="rsize">try to resize this window</p></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">scroll</div>
+            <div class="col-6">Triggered when the user scrolls the page.</div>
+            <div class="col-3"><p>scroled <span id="oscroll"></span> times</p></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">abort</div>
+            <div class="col-6">The loading of a resource has been aborted.</div>
+            <div class="col-3">video loding aborted</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">afterprint</div>
+            <div class="col-6">The print dialog has been closed or the print preview has been closed.</div>
+            <div class="col-3"><p id="oafterp">press ctrl+P to prints a page.</p></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">beforeprint</div>
+            <div class="col-6">The print dialog has been opened or the print preview has been opened.</div>
+            <div class="col-3"><p id="obeforep">press ctrl+P to prints a page.</p></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">beforeunload</div>
+            <div class="col-6">The window is about to unload its resources.</div>
+            <div class="col-3">no use here!</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">canplay</div>
+            <div class="col-6">The media can start playing, but it is not guaranteed to play through to the end without buffering.</div>
+            <div class="col-3">no use here!</div>
+            <hr>
+        </div>
+
+        <div class="row" >
+            <div class="col-3">contextmenu</div>
+            <div class="col-6">The right mouse button has been clicked (or a different pointing device has been used to trigger the context menu).</div>
+            <div class="col-3">
+                <div id="myDiv" id="myDiv" style="border:1px solid black;text-align:center">
+                    <p>Right-click on this row</p>
+                    <p>Context menu is disabled.</p>
+                    </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3"><p id="ocopy">copy & cut</p></div>
+            <div class="col-6">The content of an element has been copied to the clipboard or cutted in the clipboard.</div>
+            <div class="col-3"><input type="text" oncopy="onco()" oncut="oncu()" value="Try to copy/cut!"></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3"><p id="ondbc">dblclick</p></div>
+            <div class="col-6">An element has been double-clicked.</div>
+            <div class="col-3"><p ondblclick="ondbc()">Double click here</p></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">cuechange</div>
+            <div class="col-6">The text track cue has changed.</div>
+            <div class="col-3">no use here!</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3"><p id="dadr">drag & drop</p>
+            </div>
+            <div class="col-6">An element is being dragged.</div>
+            <div class="col-3">
+                <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <p ondragstart="dragStart(event)" ondrag="dragging(event)" draggable="true" id="dragtarget">Drag me!</p>
+                </div> 
+                <br>
+                <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3"><p id="dreage">dragend <br>dragenter <br>dragleave <br>dragover <br>dragstart</p></div>
+            <div class="col-6">A drag operation has ended. <br> The cursor has entered a drop target. <br> The cursor has left a drop target. <br> The cursor is over a drop target. <br> A drag operation is starting.</div>
+            <div class="col-3">
+                <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <p ondragstart="dragStart(event)" ondragend="dragEnd(event)" draggable="true" id="dragtarget">Drag me!</p>
+                </div> <br>
+                <div class="droptarget" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">durationchange</div>
+            <div class="col-6">The duration of the media has changed.</div>
+            <div class="col-3">no use here!</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">emptied</div>
+            <div class="col-6">The media has become empty (i.e., has no source).</div>
+            <div class="col-3">There is no media found!</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3"><p id="onen">ended</p></div>
+            <div class="col-6">The media has ended playback.</div>
+            <div class="col-3">
+                <audio controls onended="oend()">
+                    <source src="/horse.ogv" type="audio.ogg">
+                    <source src="/horse.ogv" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                  </audio>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">error</div>
+            <div class="col-6">An error has occurred.</div>
+            <div class="col-3">no media found!</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">
+                <button onclick="openFullscreen();">Go Fullscreen</button> <br>
+            </div>
+            <div class="col-6">
+                The document has entered or exited full-screen mode. <br>
+                The documment has close or exited full-screen mode.
+            </div>
+            <div class="col-3">
+                <button onclick="closeFullscreen();">Close Fullscreen</button>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3"><p>fullscreenerror</p></div>
+            <div class="col-6">An error has occurred while attempting to switch to or exit full-screen mode.</div>
+            <div class="col-3">no error occurs!</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">hashchange</div>
+            <div class="col-6">
+                The URL hash has changed.
+            </div>
+            <div class="col-3">no use here!</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3"><p id="inpo">input</p></div>
+            <div class="col-6">
+                The value of an element has changed (for input elements).
+            </div>
+            <div class="col-3">
+                <input placeholder="enter hear" type="text" id="myInput" oninput="inp()">
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">invalid</div>
+            <div class="col-6">An element is invalid (for form elements).</div>
+            <div class="col-3">
+                <form action="/action_page.php" method="get">
+                    Name: <input placeholder="preess submit" type="text" oninvalid="alert('You must fill out the form!');" name="fname" required>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">message</div>
+            <div class="col-6">
+                A message is received through a WebSocket or MessageChannel.
+            </div>
+            <div class="col-3">
+                <p>Sorry, your browser does not support server-sent events...</p>
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">offline</div>
+            <div class="col-6">The browser has lost its network connection.</div>
+            <div class="col-3">your brouser is currently online</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">online</div>
+            <div class="col-6">The browser has regained its network connection.</div>
+            <div class="col-3">your brouser is currently online</div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">open</div>
+            <div class="col-6">A WebSocket or EventSource connection has been opened.</div>
+            <div class="col-3">
+                <p>Sorry, your browser does not support server-sent events...</p>
+
+            </div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">pagehide</div>
+            <div class="col-6">The user is navigating away from the page.</div>
+            <div class="col-3"><p>no Functionality hrere!</p></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3">pageshow</div>
+            <div class="col-6">The user has navigated to the page.</div>
+            <div class="col-3"></div>
+            <hr>
+        </div>
+
+        <div class="row">
+            <div class="col-3"><p id="opest">past</p></div>
+            <div class="col-6">The content of the clipboard has been pasted into an element.</div>
+            <div class="col-3">
+                <input type="text" onpaste="onpes()" value="Paste something here" size="40">
+            </div>
+            <hr>
+        </div>
+
+    </div>
+</body>
+<script src="/script.js"></script>
+</html>
